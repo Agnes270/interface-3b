@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Worn-Parchment-BG-1_0: -2712918006127473988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

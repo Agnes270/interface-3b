@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Girl-Sprite-by-Open-Pixel-Project_0: -6366975221780756146
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

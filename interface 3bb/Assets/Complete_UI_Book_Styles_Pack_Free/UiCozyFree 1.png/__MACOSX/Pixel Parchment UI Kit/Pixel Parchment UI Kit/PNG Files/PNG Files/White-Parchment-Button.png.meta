@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      White-Parchment-Button_0: -6051338158382639809
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

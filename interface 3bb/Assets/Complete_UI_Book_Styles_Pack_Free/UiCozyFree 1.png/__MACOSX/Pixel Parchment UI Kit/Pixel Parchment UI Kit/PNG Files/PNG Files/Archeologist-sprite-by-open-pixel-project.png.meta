@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Archeologist-sprite-by-open-pixel-project_0: 2388384436910562472
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Island-Man-Sprite-by-Open-Pixel-Project_0: -5681363320495220130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

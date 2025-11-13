@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bottom-Nav-with-Gradient_0: 1831514832106827455
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bottom-Nav-Rollovers_0: 4557447959401079293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
