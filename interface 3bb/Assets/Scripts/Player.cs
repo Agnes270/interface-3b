@@ -31,27 +31,29 @@ public Transform arma;
         
         if (Input.GetKey(KeyCode.LeftArrow)) 
         {
-            gameObject.transform.Translate(Vector2.left * Time.deltaTime, 0);
+            gameObject.transform.Translate(-getVelocidade() * Time.deltaTime, 0,0);
             andando = true;
         }
 
         if (Input.GetKey(KeyCode.RightArrow)) 
 
         {
-            gameObject.transform.Translate(Vector2.right * Time.deltaTime, 0);
+            gameObject.transform.Translate(getVelocidade() * Time.deltaTime, 0,  0);
             andando = true;
         }
 
         if (Input.GetKey(KeyCode.UpArrow)) 
         {
-            gameObject.transform.Translate(Vector2.up * Time.deltaTime, 0);
+            gameObject.transform.Translate(0, getVelocidade() * Time.deltaTime, 0);
             andando = true;
         }
 
         if (Input.GetKey(KeyCode.DownArrow)) //Baixo
         {
-            transform.position -= new Vector3(0, getVelocidade() * Time.deltaTime, 0);
+            gameObject.transform.Translate(0, -getVelocidade() * Time.deltaTime, 0);
         }
+
+        animator.SetBool("Andando", andando);
 
     }
 
@@ -61,9 +63,9 @@ public Transform arma;
         {
             int vidas = getvidas() - 1;
             setvidas(vidas);
-        } 
-            
-            
+        }
+
+        
     }
             
 }    
