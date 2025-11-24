@@ -29,12 +29,14 @@ public class Arma : MonoBehaviour
         {
 
             transform.localScale = new Vector3(1, 1, 1);
+            spriteRenderer.flipX = false;
     }
 
         if (gameObject.transform.rotation.eulerAngles.z < -90 && gameObject.transform.rotation.eulerAngles.z > 270)
 
         {
           transform.localScale = new Vector3(1,-1, 1);  
+          spriteRenderer.flipX = true;
             
         }      
         float CamDis = camera.transform.position.y - saidaDoTiro.position.y;

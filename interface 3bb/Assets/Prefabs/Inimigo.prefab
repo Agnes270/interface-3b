@@ -184,10 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidas: 0
   energia: 0
-  velocidade: 0
+  velocidade: 1
   dano: 1
   raioDeVisao: 1
-  _visaoCollider2D: {fileID: 0}
+  _visaoCollider2D: {fileID: 1591261700167234564}
   posicaoPlayer: {fileID: 0}
 --- !u!70 &5931206007912583639
 CapsuleCollider2D:
@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 9058122962906048442}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.2617188, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.9866326, y: 3.1605284, z: 0.8865248}
   m_ConstrainProportionsScale: 0
   m_Children: []
