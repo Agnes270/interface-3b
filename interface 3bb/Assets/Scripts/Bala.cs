@@ -2,24 +2,26 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-    [Serialize] private int dano = 1
-        [Serialize] private float velocidade = 15f;
+    [SerializeField] private int dano = 1;
+        [SerializeField] private float velocidade = 1.5f;
+        
         private Renderer m_Renderer;
+
         public void setDano(int dano)
    
        {
-           this dano = dano;
+           this.dano = dano;
        }
-      public int get Dano()
-      
+      public int getDano()
+
       {
-      return this.dano
+          return this.dano;
       }
      
  
     void Start()
    {
-   m_Renderer = GetComponent<Rendeerer>();
+   m_Renderer = GetComponent<Renderer>();
    } 
       
     void Update()
@@ -34,17 +36,18 @@ public class Bala : MonoBehaviour
     }
     
     }
+
     private void OnTriggerEnter2D(Collider2D colisao)
-        {
-         if(colisao.gameObject.CompareTag("Inimigo")) 
     {
-        int novaVida = colisao.gameObject.GetComponent<Personagem>().getVida() - getDano();
-        colisao.gameObject.GetComponent<Personagem>().setVida(novaVida);
-       } 
-    
-    Destroy(this.gameObject);
-    
-    
-    
-}
+        if (colisao.gameObject.CompareTag("Inimigo"))
+        {
+            int novaVida = colisao.gameObject.GetComponent<Personagem>().getvidas() - getDano();
+            colisao.gameObject.GetComponent<Personagem>().setvidas(novaVida);
+        }
+
+        Destroy(this.gameObject);
+
+
+
+    }
 }
