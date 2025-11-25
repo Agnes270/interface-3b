@@ -61,7 +61,7 @@ public class Inimigo : Personagem
 
       if (posicaoPlayer != null)
       {
-       if(  Vector3.Distance(posicaoPlayer.position, transform.position) <= raioDeVisao)
+         if (Vector3.Distance(posicaoPlayer.position, transform.position) <= raioDeVisao)
          {
             Debug.Log("No raio de visao: " + posicaoPlayer.position);
             transform.position = Vector3.MoveTowards(transform.position, posicaoPlayer.transform.position
@@ -71,12 +71,22 @@ public class Inimigo : Personagem
          }
 
       }
-      if(getvidas() <= 0
+
+      if (getvidas() <= 0)
       {
-       animator.SetTrigger("Morte");  
+         animator.SetTrigger("Morte");
       }
+
       animator.SetBool("andando", andando);
+
    }
+   public void desative()
+   {
+      
+      gameObject.SetActive(false);
+
+      
+}
       private void OnCollisionEnter2D(Collision2D collision)
       {
          if(collision.gameObject.tag == "Player" && getvidas() > 0)
@@ -87,7 +97,7 @@ public class Inimigo : Personagem
       setvidas(0);
 
       }
-}
+  }
 }
    
    
