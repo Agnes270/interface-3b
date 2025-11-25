@@ -81,7 +81,7 @@ public class Inimigo : Personagem
       {
          if(collision.gameObject.tag == "Player" && getvidas() > 0)
       {
-      if novaVida = collision.gameObject.GetComponent<Personagem>().Getvida() - getDano();
+      int novaVida = collision.gameObject.GetComponent<Personagem>().getvidas() - getdano();
       collision.gameObject.GetComponent<Personagem>().setvidas(novaVida);
 
       setvidas(0);
