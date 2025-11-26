@@ -7,23 +7,24 @@ public class Bala : MonoBehaviour
     [SerializeField] private float velocidade = 1.5f;
 
     private Renderer m_Renderer;
-    
+
     public void setDano(int dano)
     {
         this.dano = dano;
     }
+
     public int getDano()
     {
         return this.dano;
     }
     
-    
+
     void Start()
     {
         m_Renderer = GetComponent<Renderer>();
     }
 
-    
+
     void Update()
     {
         transform.Translate(velocidade * Time.deltaTime, 0, 0);
@@ -33,16 +34,16 @@ public class Bala : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    
-    
-    
-    void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D colisao)
     {
-        if (collision.gameObject.CompareTag("Inimigo"))
+        if (colisao.gameObject.CompareTag("Inimigo"))
         {
-            int novaVida = collision.gameObject.GetComponent<Personagem>().getVida() - getDano();
-            collision.gameObject.GetComponent<Personagem>().setVida(novaVida);
-            Destroy(gameObject);
+            //causa dano ao Inimigo
+            int novaVida = colisao.gameObject.GetComponent<Personagem>().getVida() - getDano();
+            colisao.gameObject.GetComponent<Personagem>().setVida(novaVida);
+            
+            Destroy(this.gameObject);
         }
         
         
