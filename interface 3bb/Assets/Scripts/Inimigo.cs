@@ -2,102 +2,106 @@ using UnityEngine;
 
 public class Inimigo : Personagem
 {
-   [SerializeField] private int dano = 1;
+    [SerializeField] private int dano = 1;
 
-   public float raioDeVisao = 1;
-   public CircleCollider2D _visaoCollider2D;
+    public int pontos = 1;
+    
+    public float raioDeVisao = 1;
+    public CircleCollider2D _visaoCollider2D;
 
-   [SerializeField] private Transform posicaoPlayer;
+    [SerializeField] private Transform posicaoDoPlayer;
+    
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
-   private SpriteRenderer spriteRenderer;
-   private Animator animator;
+    private bool andando = false;
+    
+    public AudioSource audioSource;
+    
+    public void setDano(int dano)
+    {
+        this.dano = dano;
+    }
+    public int getDano()
+    {
+        return this.dano;
+    }
+    
+    
+    
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        
+        if (posicaoDoPlayer == null)
+        {
+            posicaoDoPlayer =  GameObject.FindWithTag("Player").transform;
+        }
+        
+        raioDeVisao = _visaoCollider2D.radius;
+        
+        audioSource = GetComponent<AudioSource>();
 
-   private bool andando = false;
+    }
+    void Update()
+    {
+        andando = false;
 
-   public void setdano(int dano)
+        if (getVida() > 0)
+        {
 
-   {
-      this.dano = dano;
-   }
+            if (posicaoDoPlayer.position.x - transform.position.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
 
-   public int getdano()
-   {
-      return this.dano;
+            if (posicaoDoPlayer.position.x - transform.position.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            
+            if (posicaoDoPlayer != null &&
+                Vector3.Distance(posicaoDoPlayer.position, transform.position) <= raioDeVisao)
+            {
+                Debug.Log("Posição do Player" + posicaoDoPlayer.position);
 
-   }
+                transform.position = Vector3.MoveTowards(transform.position,
+                    posicaoDoPlayer.transform.position,
+                    getVelocidade() * Time.deltaTime);
 
-   void Start()
-   {
-      spriteRenderer = GetComponent<SpriteRenderer>();
-      animator = GetComponent<Animator>();
+                andando = true;
+            }
+        }
 
-      if (posicaoPlayer == null)
-      {
-         posicaoPlayer = GameObject.FindGameObjectWithTag("Player").transform;
-      }
+        if (getVida() <= 0)
+        {
+            animator.SetTrigger("MorteInimigo");
+        }
+        
+        animator.SetBool("AndandoInimigo",andando);
 
-      raioDeVisao = _visaoCollider2D.radius;
-   }
+    }
 
-   void Update()
-   {
-      andando = false;
-      if (getvidas() > 0)
-      {
-         spriteRenderer.flipX = false;
+    public void desativa()
+    {
+        Destroy(gameObject);
+    }
 
-      }
+    public void playAudio()
+    {
+        audioSource.Play();
+    }
 
-      if (posicaoPlayer.position.x - transform.position.x < 0)
-      {
-         spriteRenderer.flipX = false;
-      }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && getVida() > 0)
+        {
+            int novaVida = collision.gameObject.GetComponent<Personagem>().getVida() - getDano();
+            collision.gameObject.GetComponent<Personagem>().setVida(novaVida);
+            
+            setVida(0);
+        }
+    }
 
-      if (posicaoPlayer.position.x - transform.position.x < 0)
-
-      {
-         spriteRenderer.flipX = true;
-      }
-
-      if (posicaoPlayer != null)
-      {
-         if (Vector3.Distance(posicaoPlayer.position, transform.position) <= raioDeVisao)
-         {
-            Debug.Log("No raio de visao: " + posicaoPlayer.position);
-            transform.position = Vector3.MoveTowards(transform.position, posicaoPlayer.transform.position
-               , getVelocidade() * Time.deltaTime);
-
-            andando = true;
-         }
-
-      }
-
-      if (getvidas() <= 0)
-      {
-         animator.SetTrigger("Morte");
-      }
-
-      animator.SetBool("andando", andando);
-
-   }
-   public void desative()
-   {
-      
-      gameObject.SetActive(false);
-
-      
 }
-      private void OnCollisionEnter2D(Collision2D collision)
-      {
-         if(collision.gameObject.tag == "Player" && getvidas() > 0)
-      {
-      int novaVida = collision.gameObject.GetComponent<Personagem>().getvidas() - getdano();
-      collision.gameObject.GetComponent<Personagem>().setvidas(novaVida);
-
-      setvidas(0);
-
-      }
-  }
-}
-   
-   

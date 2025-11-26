@@ -1,71 +1,71 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Personagem
 {
-private SpriteRenderer spriteRenderer;
-private Animator animator;
-private bool andando = false;
-public Transform arma;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    
+    public Transform arma;
 
+    private bool amdando;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
-
-
     void Update()
     {
-        andando = false;
+        
+        
+        amdando = false;
+        
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        mouseScreenPosition.z = Camera.main.nearClipPlane + 1f; 
 
-        if (arma.rotation.eulerAngles.z > -90 && arma.rotation.eulerAngles.z < 90)
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+
+        
+        if ( mouseWorldPosition.x > transform.position.x)
         {
             spriteRenderer.flipX = false;
         }
         
-            
-        if (arma.rotation.eulerAngles.z > 90 && arma.rotation.eulerAngles.z < 270)
+       
+        if ( mouseWorldPosition.x < transform.position.x)
         {
             spriteRenderer.flipX = true;
         }
-        
-        if (Input.GetKey(KeyCode.LeftArrow)) 
-        {
-            gameObject.transform.Translate(-getVelocidade() * Time.deltaTime, 0,0);
-            andando = true;
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow)) 
-
-        {
-            gameObject.transform.Translate(getVelocidade() * Time.deltaTime, 0,  0);
-            andando = true;
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow)) 
-        {
-            gameObject.transform.Translate(0, getVelocidade() * Time.deltaTime, 0);
-            andando = true;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow)) //Baixo
-        {
-            gameObject.transform.Translate(0, -getVelocidade() * Time.deltaTime, 0);
-        }
-
-        animator.SetBool("Andando", andando);
-
-    }
-
-    private void OnCollisionEnter2D (Collision2D other)
-    {
-        if (other.gameObject.tag == "Inimigo")
-        {
-            int vidas = getvidas() - 1;
-            setvidas(vidas);
-        }
 
         
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position -= new Vector3(getVelocidade() * Time.deltaTime, 0, 0);  
+            amdando = true;
+        }
+
+       
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += new Vector3(getVelocidade() * Time.deltaTime, 0, 0);
+            amdando = true;
+        }
+        
+      
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += new Vector3(0, getVelocidade() * Time.deltaTime, 0); 
+            amdando = true;
+        }
+        
+       
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position -= new Vector3(0, getVelocidade() * Time.deltaTime, 0);  
+            amdando = true;
+        }
+        
+        animator.SetBool("Andando", amdando);
     }
-            
-}    
+}

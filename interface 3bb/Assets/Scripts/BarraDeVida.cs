@@ -3,16 +3,17 @@ using UnityEngine.UI;
 
 public class BarraDeVida: MonoBehaviour
 {
+    public Slider sliderVidasRestantes;
     public Personagem personagem;
     
     public Slider sliderVidas;
     public Slider sliderEnergia;
 
     void Start()
-    if (Personagem != null)
     {
+        if (personagem != null & sliderVidasRestantes != null)
         sliderVidas.minValue = 0;
-        sliderVidas.maxValue = personagem.getvidas();
+        sliderVidas.maxValue = personagem.getVida();
 
         sliderEnergia.minValue = 0;
         sliderEnergia.maxValue = personagem.getEnergia();
@@ -21,7 +22,7 @@ public class BarraDeVida: MonoBehaviour
 
     void Update()
     {
-        sliderVidas.value = personagem.getvidas();
+        sliderVidas.value = personagem.getVida();
         sliderEnergia.value = personagem.getEnergia();
     }
        
