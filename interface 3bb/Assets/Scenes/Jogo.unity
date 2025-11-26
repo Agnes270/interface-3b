@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 531355741}
   - component: {fileID: 531355740}
   - component: {fileID: 531355739}
+  - component: {fileID: 531355742}
   m_Layer: 5
   m_Name: SliderDeEnergia (1)
   m_TagString: Untagged
@@ -768,6 +769,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531355737}
   m_CullTransparentMesh: 1
+--- !u!114 &531355742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531355737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20f51d1d71fd8a4f94c8c555d667535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personagem: {fileID: 0}
+  sliderVidas: {fileID: 0}
+  sliderEnergia: {fileID: 0}
 --- !u!1 &537853597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2486,7 @@ GameObject:
   - component: {fileID: 1742819909}
   - component: {fileID: 1742819911}
   - component: {fileID: 1742819910}
+  - component: {fileID: 1742819912}
   m_Layer: 5
   m_Name: SliderDeEnergia (2)
   m_TagString: Untagged
@@ -2534,6 +2551,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742819908}
   m_CullTransparentMesh: 1
+--- !u!114 &1742819912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742819908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20f51d1d71fd8a4f94c8c555d667535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personagem: {fileID: 0}
+  sliderVidas: {fileID: 0}
+  sliderEnergia: {fileID: 0}
 --- !u!1 &1864069342
 GameObject:
   m_ObjectHideFlags: 0
