@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PanelDevida : MonoBehaviour
+public class BarraDeVida: MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Personagem personagem;
+    
+    public Slider sliderVidas;
+    public Slider sliderEnergia;
+
     void Start()
+    if (Personagem != null)
     {
+        sliderVidas.minValue = 0;
+        sliderVidas.maxValue = personagem.getvidas();
+
+        sliderEnergia.minValue = 0;
+        sliderEnergia.maxValue = personagem.getEnergia();
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        sliderVidas.value = personagem.getvidas();
+        sliderEnergia.value = personagem.getEnergia();
     }
+       
 }
