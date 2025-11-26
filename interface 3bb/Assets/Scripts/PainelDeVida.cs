@@ -6,22 +6,17 @@ public class PainelDeVida: MonoBehaviour
     public Personagem personagem;
     
     public Slider sliderVidas;
-    public Slider sliderEnergia;
 
     void Start()
     {
         sliderVidas.minValue = 0;
-        sliderVidas.maxValue = personagem.getvidas();
-
-        sliderEnergia.minValue = 0;
-        sliderEnergia.maxValue = personagem.getEnergia();
+        sliderVidas.maxValue = personagem.getVida();
         
     }
 
     void Update()
     {
-        sliderVidas.value = personagem.getvidas();
-        sliderEnergia.value = personagem.getEnergia();
+        sliderVidas.value = personagem.getVida();
     }
        
 }
